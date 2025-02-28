@@ -146,34 +146,6 @@
                     </div>
                 </div>
             </div>
-            <div id="data-container"></div>
-              <script>
-                // 使用fetch获取数据
-                fetch('http://www.yatu.tv:2082/zhouli.asp')
-                 .then(response => {
-                    if (!response.ok) {
-                      throw new Error('网络请求失败');
-                    }
-                    return response.text();
-                  })
-                 .then(data => {
-                    // 这里 data 是获取到的网页内容（字符串形式）
-                    // 可以在这里进行数据解析和提取，比如使用正则表达式或DOMParser
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    // 假设要提取网页中的所有段落内容
-                    const paragraphs = doc.querySelectorAll('p');
-                    const dataContainer = document.getElementById('data-container');
-                    paragraphs.forEach(p => {
-                      const newP = document.createElement('p');
-                      newP.textContent = p.textContent;
-                      dataContainer.appendChild(newP);
-                    });
-                  })
-                 .catch(error => {
-                    console.error('发生错误:', error);
-                  });
-              </script>
             <br />
             <!-- END Recommended -->
             <!-- Main Footer -->
