@@ -147,6 +147,8 @@
                 </div>
             </div>
             <br />
+            <!-- 用于展示提取内容的容器 -->
+            <div id="extracted-content"></div>
             <!-- END Recommended -->
             <!-- Main Footer -->
             <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
@@ -232,6 +234,17 @@
         href = $(this).attr("href");
         pos = $(href).position().top - 30;
     });
+
+    // 使用fetch方法提取网站内容
+    fetch('http://www.yatu.tv:2082/zhouli.asp')
+       .then(response => response.text())
+       .then(data => {
+            // 将提取的内容放入页面中的指定容器
+            document.getElementById('extracted-content').innerHTML = data;
+        })
+       .catch(error => {
+            console.error('Error fetching data:', error);
+        });
     </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111463289-1"></script>
